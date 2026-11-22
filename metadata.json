@@ -1,0 +1,6 @@
+{
+  "name": "PixelTools",
+  "description": "Every Tool. One Powerful Platform. Create, edit, convert images, text, PDFs, AI tools, developer utilities and productivity tools.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
