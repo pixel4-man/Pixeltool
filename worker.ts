@@ -1,5 +1,5 @@
 /**
- * Cloudflare Worker entry point for PixelTools backend API routes
+ * Cloudflare Worker entry point for PixelTools backend API routes & static frontend assets
  */
 
 async function handleBgRemove(reqBody: any, envBindings: { REMOVE_BG_API_KEY?: string; BRIA_API_TOKEN?: string }) {
@@ -160,6 +160,15 @@ export default {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         });
       }
+    }
+
+    // Serve frontend static assets via Cloudflare Assets binding
+    try {
+      if (env.ASSETS) {
+        return await env.ASSETS.fetch(request);
+      }
+    } catch (e) {
+      // Fallback
     }
 
     return new Response('PixelTools Cloudflare Worker Active', { status: 200, headers: corsHeaders });
